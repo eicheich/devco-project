@@ -17,10 +17,10 @@ class StorePostController extends Controller
     public function __invoke(Request $request)
     {
         $request->user()->posts()->create($request->validate([
-            'body' => ['required', 'min:3', 'max:140'],
+            'body' => ['required', 'min:8', 'max:140'],
         ]));
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Your post was sent.');
     }
 }
