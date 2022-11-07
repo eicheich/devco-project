@@ -28,6 +28,15 @@
                     <h3 class="card-title">{{$post->user->name}} .<p class="text-gray-300">{{$post->created_at->diffForHumans() }}</p> </h3>
                         <p>{{$post->body}}</p>
             </div>
+            <div class="card-actions justify-end mb-2">
+                {{-- button comment --}}
+                <a href="{{ route('post.show', $post) }}" class="btn btn-ghost btn-sm mx-4" id="commentBtn" >Comment</a>
+                {{-- button like --}}
+                <button class="btn btn-ghost btn-sm" id="likeBtn" onclick="">Like</button>
+                {{-- button share --}}
+                <button class="btn btn-ghost btn-sm mx-4" id="shareBtn" onclick="showShare()">Share</button>
+
+            </div>
         </div>
         @endforeach
     </div>
