@@ -18,10 +18,17 @@
                             </div>
                         @enderror
 
-                        <input type="submit" value="Post" class="btn btn-accent btn-sm mt-2 alignment">
+                        <input type="submit" value="Post" class="btn btn-secondary btn-sm mt-2 alignment">
                     </form>
                 </div>
             </div>
+            @foreach ($posts as $post)
+            <div class="card w-full bg-base-100 shadow-xl my-4">
+                <div class="card-body">
+                    <h3 class="card-title">{{$post->user->name}} .<p class="text-gray-300">{{$post->created_at->diffForHumans() }}</p> </h3>
+                        <p>{{$post->body}}</p>
+            </div>
         </div>
+        @endforeach
     </div>
 </x-app-layout>
