@@ -16,9 +16,7 @@ class TimelineController extends Controller
     public function __invoke(Request $request)
     {
         return view('dashboard', [
-            'posts' => Post::with('user')
-                ->latest()
-                ->paginate(10)
+            'posts' => Post::with('user', 'comments')->latest()->paginate(10)
         ]);
     }
 }

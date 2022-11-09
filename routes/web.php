@@ -22,6 +22,7 @@ Route::get('/dashboard', TimelineController::class )->middleware(['auth', 'verif
 Route::post('post', \App\Http\Controllers\Post\StorePostController::class)->name('post.store');
 Route::get('post/{post}', \App\Http\Controllers\Post\ShowPostController::class)->name('post.show');
 Route::post('post/{post}/comment', \App\Http\Controllers\Post\PostStoreCommentController::class)->name('post.comment.store');
+Route::delete('post/{post}/comment/{comment}', \App\Http\Controllers\Post\DeleteCommentController::class)->name('post.comment.destroy');
 
 
 

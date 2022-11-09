@@ -22,15 +22,24 @@
     </div>
     <div class="comment mb-2">
         @foreach( $post->comments as $comment )
-                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pb-2">
-                         <div class=" w-full bg-base-100 l rounded-lg">
+                     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 pb-4">
+                         <div class=" w-full bg-base-200 l rounded-lg">
                              <div class="card-body">
-                                <h3 class="card-title">{{$comment->user->name }} - <span class="text-gray-400">{{$comment->created_at->diffForHumans() }}</span> </h3>
+                                <h3 class="card-title">{{$comment->user->name }} - <span class="text-gray-400">{{$comment->created_at->diffForHumans() }}</span>
+                                    <form action="{{ route('post.comment.destroy', [$comment->post, $comment]) }}" method="POST" >
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" value="Delete" class="btn btn-error">Delete</button>
+                                    </form>
+
+                                </h3>
                                     <p>{{$comment->body}}</p>
+                                    <a href=""></a>
                                 </div>
                             </div>
                             </div>
                     @endforeach
+
     </div>
      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
