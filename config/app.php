@@ -69,7 +69,6 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,8 +80,12 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
+    // timezone japan
+    // timezone korea
 
-    'locale' => 'en',
+    'timezone' => 'Asia/Jakarta',
+    'locale' => 'id',
+    'faker_locale' => 'id_ID',
 
     /*
     |--------------------------------------------------------------------------
@@ -107,8 +110,6 @@ return [
     | localized telephone numbers, street address information and more.
     |
     */
-
-    'faker_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
