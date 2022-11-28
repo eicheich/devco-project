@@ -19,10 +19,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', TimelineController::class )->middleware(['auth', 'verified'])->name('dashboard');
-Route::post('post', \App\Http\Controllers\Post\StorePostController::class)->name('post.store');
-Route::get('post/{post}', \App\Http\Controllers\Post\ShowPostController::class)->name('post.show');
-Route::post('post/{post}/comment', \App\Http\Controllers\Post\PostStoreCommentController::class)->name('post.comment.store');
+Route::group(["prefix" => "post"], function(){
+    Route::post('', \App\Http\Controllers\Post\StorePostController::class)->name('post.store');
+    Route::get('/{post}', \App\Http\Controllers\Post\ShowPostController::class)->name('post.show');
+    Route::post('/{post}/comment', \App\Http\Controllers\Post\PostStoreCommentController::class)->name('post.comment.store');
+    Route::delete('/{post}/comment/{comment}', \App\Http\Controllers\Post\DeleteCommentController::class)->name('post.comment.destroy');
+    Route::get('/{post}/edit', \App\Http\Controllers\Post\EditPostController::class)->name('post.edit');
+    Route::put('/{post}/edit', \App\Http\Controllers\Post\UpdatePostController::class)->name('post.update');
 
+} );
 
 
 require __DIR__.'/auth.php';
