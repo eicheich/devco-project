@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    
+
 
     public function user()
     {
@@ -19,5 +19,13 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+    public function likes()
+    {
+        return $this->hasMany(like::class);
+    }
+    public function likedBy(User $user)
+    {
+        return $this->likes->contains('user_id', $user->id);
     }
 }

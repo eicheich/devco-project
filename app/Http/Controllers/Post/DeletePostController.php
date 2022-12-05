@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
-class DeleteCommentController extends Controller
+class DeletePostController extends Controller
 {
 
     /**
@@ -16,11 +15,11 @@ class DeleteCommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request, Post $post, Comment $comment)
+    public function __invoke(Request $request, Post $post)
     {
-        $this->authorize('delete', $comment);
-        $comment->delete();
-        session()->flash('success', 'Comment deleted successfully');
+        $this->authorize('delete', $post);
+        $post->delete();
+        session()->flash('success', 'Post deleted successfully');
         return redirect()->back();
 
 
