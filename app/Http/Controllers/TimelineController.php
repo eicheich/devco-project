@@ -17,11 +17,19 @@ class TimelineController extends Controller
     {
         return view('dashboard', [
 
+            // count comments and likes of post
+            // show all posts with little query
+            'posts' => Post::withCount(['comments', 'likes'])->with('user')->latest()->paginate(10),
+            // 'posts' => Post::withCount(['comments', 'likes'])->latest()->get(),
 
-            'posts' => Post::with('user')->withCount('comments')
-                ->latest()
-                ->paginate(10)
+            // 'posts' => Post::with('user')->withCount('comments', 'likes')
+            //     ->latest()
+            //     ->paginate(5)
+
 
         ]);
+
+        // count the number of comments on each post
+
     }
 }

@@ -14,8 +14,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        // fake data for post table
         \App\Models\Post::factory(10)->create();
+
+
+        // fake data for comment table
 
 
 

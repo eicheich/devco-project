@@ -67,7 +67,8 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        //
+        // policy for deleting a post
+        return $user->id === $post->user_id;
     }
 
     /**
@@ -91,6 +92,8 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post)
     {
+        // policy for force deleting a post
+        return $user->id === $post->user_id;
 
     }
 
